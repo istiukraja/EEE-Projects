@@ -14,6 +14,9 @@ An Arduino-based smart vacuum cleaner project featuring dual-mode operation: **A
 * **Differential Drive:** Full 360° maneuverability using an L298N motor driver.
 
 ---
+## Videos
+
+[![Auto Mode](https://img.youtube.com/vi/vTNY9oBBn9s/0.jpg)](https://youtube.com/shorts/vTNY9oBBn9s) [![Manual Mode](https://img.youtube.com/vi/j-PNQS3lYDg/0.jpg)](https://youtu.be/j-PNQS3lYDg)
 
 ## Hardware Requirements
 
