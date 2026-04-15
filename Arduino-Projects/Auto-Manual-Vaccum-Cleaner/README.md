@@ -1,1 +1,77 @@
-🚀 FeaturesDual Mode Operation: Toggle between autonomous cleaning and manual steering.Obstacle Avoidance: Uses a HC-SR04 ultrasonic sensor and a servo motor to "look" around and find the best path.Non-Blocking Logic: Utilizes millis() for relay and sensor timing, ensuring the robot remains responsive without "freezing" during delays.Suction Control: Integrated relay system that cycles the vacuum motor on a timed interval.Differential Steering: L298N motor driver integration for precise forward, backward, and turning movements.🛠 Hardware ComponentsComponentQuantityPurposeArduino Uno (or compatible)1Main ControllerL298N Motor Driver1Controls DC MotorsHC-SR04 Ultrasonic Sensor1Distance MeasurementServo Motor (SG90)1Rotates the sensor to scan surroundingsRelay Module1Switches the vacuum motor ON/OFFGear Motors & Wheels2LocomotionVacuum Motor/Fan1Suction mechanism🔌 Pin MappingL298N Motor DriverLeft Motor Forward: Pin 5Left Motor Backward: Pin 6Right Motor Forward: Pin 3Right Motor Backward: Pin 11Sensors & ActuatorsUltrasonic Trig: A3Ultrasonic Echo: A2Servo Signal: Pin 9Relay Control: A5Mode Toggle (Auto/Manual): A7🕹️ How it Works1. Autonomous ModeWhen the auto_pin (A7) reads a high signal:The robot moves forward until it detects an obstacle within 20cm.It stops, moves back slightly, and rotates the servo to scan distances on the Left and Right.It compares the distances and turns toward the side with the most open space.2. Manual ModeWhen the auto_pin is low, the robot listens for Serial commands (often sent via a Bluetooth module like HC-05):'F': Forward'B': Backward'L': Turn Left'R': Turn Right'S': Stop (Default)3. Vacuum Relay LogicThe relay operates independently of the movement mode using a non-blocking timer:ON: 3 SecondsOFF: 2 Seconds
+# Auto Manual Vacuum Cleaner 
+
+An Arduino-based smart vacuum cleaner project featuring dual-mode operation: **Autonomous Obstacle Avoidance** and **Manual Control** via Serial/Bluetooth. This project utilizes an ultrasonic sensor for navigation and a relay-controlled suction system.
+
+---
+
+## Features
+
+* **Dual Mode Logic:** Seamlessly switch between manual steering and self-driving mode.
+* **Intelligent Navigation:** Uses a Servo-mounted HC-SR04 sensor to scan 180° for the clearest path.
+* **Non-Blocking Code:** Implements `millis()` for relay cycling and sensor checks, preventing the "stuttering" often caused by `delay()`.
+* **Timed Suction:** A dedicated relay control cycles the vacuum motor to manage power efficiency.
+* **Differential Drive:** Full 360° maneuverability using an L298N motor driver.
+
+---
+
+## Hardware Requirements
+
+| Component | Pin / Type | Purpose |
+| :--- | :--- | :--- |
+| **Arduino Uno** | Microcontroller | Central processing unit |
+| **L298N Driver** | Pins 3, 5, 6, 11 | Controls DC motor direction and speed |
+| **HC-SR04** | Pins A2 (Echo), A3 (Trig) | Detects obstacles |
+| **SG90 Servo** | Pin 9 | Rotates the "eye" (Ultrasonic sensor) |
+| **Relay Module** | Pin A5 | Controls the Vacuum Motor power |
+| **Mode Switch** | Pin A7 | Toggles between Auto and Manual |
+
+---
+
+## Connection Diagram
+
+### Motor Driver (L298N)
+* **Left Motor Forward:** Pin 5
+* **Left Motor Backward:** Pin 6
+* **Right Motor Forward:** Pin 3
+* **Right Motor Backward:** Pin 11
+
+### Peripherals
+* **Servo Motor:** Pin 9
+* **Ultrasonic Trig:** A3
+* **Ultrasonic Echo:** A2
+* **Relay Pin:** A5
+* **Mode Toggle (Auto):** A7 (Analog read > 900 triggers Auto)
+
+---
+
+## Operation
+
+### Autonomous Mode
+When the `auto_pin` is high, the robot moves forward. Upon detecting an obstacle within **20cm**:
+1.  It stops and reverses slightly.
+2.  The servo scans **Right (10°)** and **Left (170°)**.
+3.  The robot compares distances and turns toward the clear path.
+4.  If both sides are blocked, it performs a wide right turn to U-turn.
+
+### Manual Mode
+The robot listens for Serial characters (Compatible with Bluetooth Terminal apps):
+* `F` : Forward
+* `B` : Backward
+* `L` : Turn Left
+* `R` : Turn Right
+* `S` : Stop
+
+---
+
+## Software Installation
+
+1.  **Install Libraries:**
+    * `NewPing`: For high-performance ultrasonic ranging.
+    * `Servo`: For controlling the sensor sweep.
+2.  **Upload Code:** Use the Arduino IDE to flash the `.ino` file to your board.
+3.  **Adjust Thresholds:** You can modify the `motorSpeed` (default 100) or `maximum_distance` in the variables section of the code.
+
+---
+
+## 📜 License
+This project is open-source. Feel free to fork and modify!
