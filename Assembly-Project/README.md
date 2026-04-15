@@ -2,6 +2,8 @@
 
 An 8051-based embedded system designed to measure, analyze, and display signal characteristics in real-time.
 
+![Project Simulation](Proteus_SS.png)
+
 ## Overview
 This project focuses on high-precision frequency and pulse width (Duty Cycle) measurement. It utilizes a state-machine logic to cycle through different signal analysis tasks, including stability checking and frequency comparison.
 
