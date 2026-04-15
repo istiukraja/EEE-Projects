@@ -3,7 +3,7 @@
 An Arduino-based smart vacuum cleaner project featuring dual-mode operation: **Autonomous Obstacle Avoidance** and **Manual Control** via Serial/Bluetooth. This project utilizes an ultrasonic sensor for navigation and a relay-controlled suction system.
 
 ---
-![Project Simulation](Pic1.jpg)
+![Project Simulation](pic1.jpg)
 
 ## Features
 
