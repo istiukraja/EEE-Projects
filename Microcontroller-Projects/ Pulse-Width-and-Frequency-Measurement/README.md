@@ -9,6 +9,7 @@ This project focuses on high-precision frequency and pulse width (Duty Cycle) me
 
 This project uses an **8051 Microcontroller** to measure the frequency and duty cycle of input signals. It features a manual state machine controlled by a pushbutton, stability analysis with a buzzer, and a Min/Max frequency tracker.
 
+![Project Simulation](microcontrollerpic.jpg)
 ## Features
 * **Frequency Measurement:** Measures F1, F2, and F3 using Timer 0/1 and software polling.
 * **Duty Cycle:** Calculates the pulse width of the input signal in percentage.
