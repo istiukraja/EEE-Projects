@@ -3,7 +3,7 @@
 This project is an Arduino-based Bluetooth controlled robot car using a BTS dual motor driver. The system receives commands via Bluetooth and controls the movement of a differential drive robot.
 
 ---
-
+![Project Simulation](soccebot.jpg)
 ## Overview
 
 The robot is controlled wirelessly using serial commands sent from a smartphone or any Bluetooth terminal application. The Arduino reads the incoming characters and drives the motors accordingly using PWM signals.
