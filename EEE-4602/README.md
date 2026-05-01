@@ -4,6 +4,7 @@ A modern, interactive **signal processing visualization tool** built with Python
 It provides an intuitive GUI to explore **convolution and correlation** for both discrete-time and continuous-time signals with real-time animated visualization.
 
 ---
+![Convolution](convol.png)
 
 ## Features
 
